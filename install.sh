@@ -82,7 +82,7 @@ refreshkeys() { \
 	}
 
 newperms() { # Set special sudoers settings for install (or after).
-	sed -i "/# $*/$*/" /etc/sudoers ;}
+	sed -i "s/# $*/$*/" /etc/sudoers ;}
 
 manualinstall() { # Installs $1 manually if not installed. Used only for AUR helper here.
 	[ -f "/usr/bin/$1" ] || (
