@@ -36,7 +36,7 @@ fi
 error() { clear; printf "ERROR:\\n%s\\n" "$1"; exit;}
 
 welcomemsg() { \
-	dialog --title "Welcome!" --msgbox "Welcome to Luke's Auto-Rice Bootstrapping Script!\\n\\nThis script will automatically install a fully-featured Linux desktop, which I use as my main machine.\\n\\n-Luke" 10 60
+	dialog --title "Welcome!" --msgbox "Welcome to Luke's Auto-Rice Bootstrapping Script!\\n\\nThis script will automatically install a fully-featured Linux desktop, which I use as my main machine.\\n\\n-Luke $distro" 10 60
 	}
 
 selectdotfiles() { \
@@ -167,7 +167,7 @@ installpkg dialog || error "Are you sure you're running this as the root user an
 
 # Welcome user and pick dotfiles.
 welcomemsg || error "User exited."
-selectdotfiles || error "User exited."
+#selectdotfiles || error "User exited."
 
 # Get and verify username and password.
 getuserandpass || error "User exited."
@@ -185,14 +185,14 @@ adduserandpass || error "Error adding username and/or password."
 # Refresh Arch keyrings.
 # refreshkeys || error "Error automatically refreshing Arch keyring. Consider doing so manually."
 
-dialog --title "LARBS Installation" --infobox "Installing \`basedevel\` and \`git\` for installing other software required for the installation of other programs." 5 70
-installpkg curl
-installpkg base-devel
-installpkg git
-installpkg ntp
-
-dialog --title "LARBS Installation" --infobox "Synchronizing system time to ensure successful and secure installation of software..." 4 70
-ntp 0.us.pool.ntp.org >/dev/null 2>&1
+#dialog --title "LARBS Installation" --infobox "Installing \`basedevel\` and \`git\` for installing other software required for the installation of other programs." 5 70
+#installpkg curl
+#installpkg base-devel
+#installpkg git
+#installpkg ntp
+#
+#dialog --title "LARBS Installation" --infobox "Synchronizing system time to ensure successful and secure installation of software..." 4 70
+#ntp 0.us.pool.ntp.org >/dev/null 2>&1
 
 [ "$distro" = arch ] && { \
 	[ -f /etc/sudoers.pacnew ] && cp /etc/sudoers.pacnew /etc/sudoers # Just in case
@@ -238,7 +238,7 @@ grep -q "laptop-updates.brave.com" /etc/hosts || echo "0.0.0.0 laptop-updates.br
 0.0.0.0 go-updater.brave.com" >> /etc/hosts
 
 # Let LARBS know the WM it's supposed to run.
-echo "$edition" > "/home/$name/.local/share/larbs/wm"; chown -R "$name":wheel "/home/$name/.local"
+#echo "$edition" > "/home/$name/.local/share/larbs/wm"; chown -R "$name":wheel "/home/$name/.local"
 
 # This line, overwriting the `newperms` command above will allow the user to run
 # serveral important commands, `shutdown`, `reboot`, updating, etc. without a password.
