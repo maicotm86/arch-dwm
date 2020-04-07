@@ -3,6 +3,7 @@
 ,xorg-xwininfo,allows querying information about windows.
 ,xorg-xprop,is a tool for detecting window properties.
 ,xorg-xinit,starts the graphical server.
+,xorg-xsetroot,display status on dwm bar
 ,i3-gaps,is the main graphical user interface and window manager.
 ,ttf-linux-libertine,provides the sans and serif fonts for LARBS.
 ,ttf-fira-mono,fonts
