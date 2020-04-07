@@ -55,6 +55,7 @@ A,sc-im,is an Excel-like terminal spreadsheet manager.
 ,highlight,can highlight code output.
 ,xorg-xbacklight,enables changing screen brightness levels.
 ,zsh-syntax-highlighting,provides fish-like syntax highlighting in the shell.
+,grml-zsh-config,zsh lovers config
 A,task-spooler,queues commands or files for download.
 A,simple-mtpfs-git,enables the mounting of cell phones.
 G,https://github.com/LukeSmithxyz/dwmblocks.git,serves as the modular status bar.

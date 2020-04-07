@@ -69,8 +69,9 @@ preinstallmsg() { \
 adduserandpass() { \
 	# Adds user `$name` with password $pass1.
 	dialog --infobox "Adding user \"$name\"..." 4 50
-	useradd -m -g wheel -s /bin/bash "$name" >/dev/null 2>&1 ||
-	usermod -a -G wheel "$name" && mkdir -p /home/"$name" && chown "$name":wheel /home/"$name"
+	useradd -m -g wheel -G sys,network,power,audio,video,storage -s /bin/bash $name
+	#useradd -m -g wheel -s /bin/bash "$name" >/dev/null 2>&1 ||
+	#usermod -a -G wheel "$name" && mkdir -p /home/"$name" && chown "$name":wheel /home/"$name"
 	repodir="/home/$name/.local/src"; mkdir -p "$repodir"; chown -R "$name":wheel "$repodir"
 	echo "$name:$pass1" | chpasswd
 	unset pass1 pass2 ;}
@@ -81,8 +82,7 @@ refreshkeys() { \
 	}
 
 newperms() { # Set special sudoers settings for install (or after).
-	sed -i "/# $*/$*/" /etc/sudoers
-	echo "$* #LARBS" >> /etc/sudoers ;}
+	sed -i "/# $*/$*/" /etc/sudoers ;}
 
 manualinstall() { # Installs $1 manually if not installed. Used only for AUR helper here.
 	[ -f "/usr/bin/$1" ] || (
