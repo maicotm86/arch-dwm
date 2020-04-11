@@ -1,4 +1,3 @@
- install.sh                                                                 buffers
 #!/bin/sh
 # Luke's Auto Rice Boostrapping Script (LARBS)
 # by Luke Smith <luke@lukesmith.xyz>
